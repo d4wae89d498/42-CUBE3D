@@ -1,6 +1,6 @@
 #include "cube3d.h"
 
-e_bool	ft_end_with(char *str, char *end)
+t_bool	ft_end_with(char *str, char *end)
 {
 	size_t	strlen;
 	size_t	endlen;
@@ -19,7 +19,7 @@ e_bool	ft_end_with(char *str, char *end)
 	return (TRUE);
 }
 
-e_bool	ft_is_map_name_valid(char *map_name)
+t_bool	ft_is_map_name_valid(char *map_name)
 {
     size_t	last_slash_pos;
     size_t	i;

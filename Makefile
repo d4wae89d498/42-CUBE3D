@@ -4,8 +4,8 @@
 
 SRCS		=		srcs/main.c \
 					srcs/gnl/get_next_line.c srcs/gnl/get_next_line_utils.c \
-					srcs/utils/ft_strlen.c \
-					srcs/parsing/ft_parse.c srcs/parsing/ft_parse_error.c srcs/parsing/ft_is_map_name_valid.c
+					srcs/utils/ft_strlen.c srcs/utils/ft_strcmp.c srcs/utils/ft_skip_whitespaces.c \
+					srcs/parsing/ft_parse.c srcs/parsing/ft_parse_error.c srcs/parsing/ft_is_map_name_valid.c srcs/parsing/ft_parse_map.c
 
 #-----------------------------------------------#
 #----------------[ COMPILATION ]----------------#

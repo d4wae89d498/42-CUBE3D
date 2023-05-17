@@ -2,9 +2,10 @@
 
 int main(int ac, char **av)
 {
-    e_parse_err parse_ret;
+    t_map       map;
+    t_parse_err parse_ret;
 
-    if ((parse_ret = ft_parse(ac, av)) != OK)
+    if ((parse_ret = ft_parse(ac, av, &map)) != OK)
         return (ft_parse_error(parse_ret));
     return (0);
 }
