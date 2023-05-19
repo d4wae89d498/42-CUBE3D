@@ -1,0 +1,1 @@
+[ ] Tout initialiser a NULL dans le ft_init.c et modifier le ft_error.c pour qu'il free les trucs allouer.

@@ -9,8 +9,14 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <mlx.h>
 
 #include "../srcs/gnl/get_next_line.h"
+
+//	DEFINE
+
+#define TEXTURE_WIDTH 50
+#define TEXTURE_HEIGHT 50
 
 //  TYPEDEF
 
@@ -20,14 +26,15 @@ typedef enum e_bool
 	TRUE = 1
 }	t_bool;
 
-typedef enum e_parse_err
+typedef enum e_err
 {
 	OK,
+	INITIALIZATION_ERROR,
     WRONG_ARG_NUMBER,
 	WRONG_MAP_NAME,
 	OPEN_ERROR,
 	MAP_ERROR
-}	t_parse_err;
+}	t_err;
 
 typedef enum e_direction
 {
@@ -35,20 +42,28 @@ typedef enum e_direction
 	SO,
 	EA,
 	WE,
-	NOT_VALID
+	NONE
 }	t_direction;
 
 typedef struct s_texture
 {
 	t_direction direction;
-	char		*texture;
+	void		*texture_img;
+	int			width;
+	int			height;
 }	t_texture;
 
 typedef	struct s_map
 {
 	char		**map_data;
-	t_texture	textures[4];
 }	t_map;
+
+typedef struct s_data
+{
+	t_map		map;
+	t_texture	textures[4];
+	void		*mlx;
+}	t_data;
 
 //  PROTOTYPE
 
@@ -56,13 +71,19 @@ typedef	struct s_map
 
 int			ft_strlen(char *str);
 t_bool		ft_strcmp(char *s1, char *s2);
-void	    ft_skip_whitespaces(char **str);
+size_t	    ft_skip_whitespaces(char *str);
+int			ft_error(t_err errtype);
+void 		ft_strtrim_end(char *str);
+
+//		INITIALIZATION
+
+t_err		ft_init(t_data *data);
 
 //      PARSING
 
-t_parse_err	ft_parse(int ac, char **av, t_map *map);
-int			ft_parse_error(t_parse_err errtype);
+t_err		ft_parse(int ac, char **av, t_data *data);
 t_bool		ft_is_map_name_valid(char *map_name);
-t_bool		ft_parse_map(int fd, t_map *map);
+t_bool		ft_parse_map(int fd, t_data *data);
+t_bool		ft_parse_textures(int fd, t_data *data);
 
 #endif
