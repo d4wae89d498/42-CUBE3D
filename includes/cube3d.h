@@ -37,12 +37,12 @@ typedef enum e_err
 }	t_err;
 
 typedef enum e_direction
-{
+{	
+	NONE = 0,
 	NO,
 	SO,
 	EA,
-	WE,
-	NONE
+	WE
 }	t_direction;
 
 typedef struct s_texture
@@ -74,6 +74,7 @@ t_bool		ft_strcmp(char *s1, char *s2);
 size_t	    ft_skip_whitespaces(char *str);
 int			ft_error(t_err errtype);
 void 		ft_strtrim_end(char *str);
+void    	ft_bzero(void *data, size_t n);
 
 //		INITIALIZATION
 
