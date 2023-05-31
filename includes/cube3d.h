@@ -72,7 +72,7 @@ typedef struct s_data
 int			ft_strlen(char *str);
 t_bool		ft_strcmp(char *s1, char *s2);
 size_t	    ft_skip_whitespaces(char *str);
-int			ft_error(t_err errtype);
+int			ft_error(t_err errtype, t_data *data);
 void 		ft_strtrim_end(char *str);
 void    	ft_bzero(void *data, size_t n);
 
@@ -86,5 +86,9 @@ t_err		ft_parse(int ac, char **av, t_data *data);
 t_bool		ft_is_map_name_valid(char *map_name);
 t_bool		ft_parse_map(int fd, t_data *data);
 t_bool		ft_parse_textures(int fd, t_data *data);
+
+//		DESTRUCTION
+
+void    	ft_destroy(t_data *data);
 
 #endif

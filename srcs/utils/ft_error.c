@@ -9,8 +9,9 @@ static const char *ERROR_STR[] = {
 	"MAP_ERROR"
 };
 
-int ft_error(t_err errtype)
+int ft_error(t_err errtype, t_data *data)
 {
     printf("Error\nCODE : %s\n", ERROR_STR[errtype]);
+    ft_destroy(data);
     return (1);
 }
