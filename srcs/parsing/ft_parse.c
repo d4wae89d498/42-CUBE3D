@@ -1,6 +1,12 @@
 #include "cube3d.h"
 
-t_err ft_parse(int ac, char **av, t_data *data)
+static t_err	ft_close_and_return(int fd, t_err errtype)
+{
+	close(fd);
+	return (errtype);
+}
+
+t_err	ft_parse(int ac, char **av, t_data *data)
 {
     int fd;
 
@@ -12,6 +18,6 @@ t_err ft_parse(int ac, char **av, t_data *data)
     if (fd < 0)
         return (OPEN_ERROR);
     if (!ft_parse_map(fd, data))
-        return (MAP_ERROR);
-    return (OK);
+		return (ft_close_and_return(fd, MAP_ERROR));
+	return (ft_close_and_return(fd, OK));
 }

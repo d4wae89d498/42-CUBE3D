@@ -21,6 +21,7 @@ void    ft_destroy(t_data *data)
     ft_destroy_textures(data);
     if (data->mlx)
     {
+        mlx_destroy_display(data->mlx);
         free(data->mlx);
         data->mlx = NULL;
     }

@@ -75,6 +75,7 @@ size_t	    ft_skip_whitespaces(char *str);
 int			ft_error(t_err errtype, t_data *data);
 void 		ft_strtrim_end(char *str);
 void    	ft_bzero(void *data, size_t n);
+t_bool		ft_skip_newlines(int fd, char **current_line);
 
 //		INITIALIZATION
 
@@ -86,6 +87,7 @@ t_err		ft_parse(int ac, char **av, t_data *data);
 t_bool		ft_is_map_name_valid(char *map_name);
 t_bool		ft_parse_map(int fd, t_data *data);
 t_bool		ft_parse_textures(int fd, t_data *data);
+t_bool		ft_parse_colors(int fd, char *line);
 
 //		DESTRUCTION
 
