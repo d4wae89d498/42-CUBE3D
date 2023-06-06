@@ -45,6 +45,13 @@ typedef enum e_direction
 	WE
 }	t_direction;
 
+typedef enum e_side
+{
+	NONE = 0,
+	C,
+	F
+}	t_side;
+
 typedef struct s_texture
 {
 	t_direction direction;
@@ -87,7 +94,7 @@ t_err		ft_parse(int ac, char **av, t_data *data);
 t_bool		ft_is_map_name_valid(char *map_name);
 t_bool		ft_parse_map(int fd, t_data *data);
 t_bool		ft_parse_textures(int fd, t_data *data);
-t_bool		ft_parse_colors(int fd, char *line);
+t_bool		ft_parse_colors(int fd, t_data *data, char *line);
 
 //		DESTRUCTION
 
