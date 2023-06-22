@@ -20,6 +20,8 @@
 
 //  TYPEDEF
 
+typedef unsigned char t_u1;
+
 typedef enum e_bool
 {
 	FALSE = 0,
@@ -47,7 +49,7 @@ typedef enum e_direction
 
 typedef enum e_side
 {
-	NONE = 0,
+	NAS = 0,
 	C,
 	F
 }	t_side;
@@ -60,6 +62,14 @@ typedef struct s_texture
 	int			height;
 }	t_texture;
 
+typedef struct s_color
+{
+	t_side			side;
+	unsigned char	red;
+	unsigned char	green;
+	unsigned char	blue;
+}	t_color;
+
 typedef	struct s_map
 {
 	char		**map_data;
@@ -69,6 +79,7 @@ typedef struct s_data
 {
 	t_map		map;
 	t_texture	textures[4];
+	t_color		colors[2];
 	void		*mlx;
 }	t_data;
 
@@ -83,6 +94,7 @@ int			ft_error(t_err errtype, t_data *data);
 void 		ft_strtrim_end(char *str);
 void    	ft_bzero(void *data, size_t n);
 t_bool		ft_skip_newlines(int fd, char **current_line);
+t_bool		ft_parse_u1(char *number, t_u1 *out);
 
 //		INITIALIZATION
 

@@ -13,20 +13,16 @@ static t_side	ft_is_side(char *line)
 	return (NONE);
 }
 
-static t_bool   ft_parse_color_line(char *line, t_data *data)
+static t_bool   ft_parse_color_line(char *line, t_data *data, size_t index)
 {
-	size_t	i;
+	t_side	side;
 
-	if (ft_strcmp(line, "F"))
-	{
-
-	}
-	i = 0;
-	while (line[i])
-	{
-
-		i++;
-	}
+	side = ft_is_side(line);
+	if (side == NONE)
+		return (FALSE);
+	data->colors[index].side = side;
+	
+	return (TRUE);
 }
 
 t_bool			ft_parse_colors(int fd, t_data *data, char *line)
