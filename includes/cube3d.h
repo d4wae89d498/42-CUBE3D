@@ -15,8 +15,12 @@
 
 //	DEFINE
 
-#define TEXTURE_WIDTH 50
-#define TEXTURE_HEIGHT 50
+#define MAX_MAP_WIDTH 40
+#define MAX_MAP_HEIGHT 40
+#define WIDTH 800
+#define HEIGHT 600
+#define PI 3.14159265359
+#define FOV_ANGLE (60 * (PI / 180)) // Angle de champ de vision
 
 //  TYPEDEF
 
@@ -27,6 +31,13 @@ typedef enum e_bool
 	FALSE = 0,
 	TRUE = 1
 }	t_bool;
+
+typedef enum e_side 
+{
+	NO_SIDE,
+	F = 1,
+	C = 2
+} t_side;
 
 typedef enum e_err
 {
@@ -40,48 +51,63 @@ typedef enum e_err
 
 typedef enum e_direction
 {	
-	NONE = 0,
-	NO,
-	SO,
-	EA,
-	WE
+	NONE,
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
 }	t_direction;
 
-typedef enum e_side
-{
-	NAS = 0,
-	C,
-	F
-}	t_side;
 
-typedef struct s_texture
+typedef struct s_player
 {
-	t_direction direction;
-	void		*texture_img;
-	int			width;
-	int			height;
-}	t_texture;
+    double x;
+    double y;
+    double dir_x;
+    double dir_y;
+    double plane_x;
+    double plane_y;
+} t_player;
 
-typedef struct s_color
+typedef struct s_ray
 {
-	t_side			side;
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
-}	t_color;
+    double camera_x;
+    double dir_x;
+    double dir_y;
+    int map_x;
+    int map_y;
+    double side_dist_x;
+    double side_dist_y;
+    double delta_dist_x;
+    double delta_dist_y;
+    double perp_wall_dist;
+    int step_x;
+    int step_y;
+    int hit;
+    int side;
+} t_ray;
 
-typedef	struct s_map
-{
-	char		**map_data;
-}	t_map;
+typedef struct s_mlx_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+    int     width;
+    int     height;
+}	t_mlx_img;
 
-typedef struct s_data
+typedef struct 
 {
-	t_map		map;
-	t_texture	textures[4];
-	t_color		colors[2];
-	void		*mlx;
-}	t_data;
+    void *mlx_ptr;
+    void *win_ptr;
+    t_player player;
+    t_mlx_img	img;
+    t_mlx_img		textures[4];
+	unsigned int			floor_color;
+	unsigned int			sky_color;
+	char 			map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH];
+}   t_game_data ;
 
 //  PROTOTYPE
 
@@ -90,7 +116,7 @@ typedef struct s_data
 int			ft_strlen(char *str);
 t_bool		ft_strcmp(char *s1, char *s2);
 size_t	    ft_skip_whitespaces(char *str);
-int			ft_error(t_err errtype, t_data *data);
+int			ft_error(t_err errtype, t_game_data *data);
 void 		ft_strtrim_end(char *str);
 void    	ft_bzero(void *data, size_t n);
 t_bool		ft_skip_newlines(int fd, char **current_line);
@@ -98,18 +124,33 @@ t_bool		ft_parse_u1(char *number, t_u1 *out);
 
 //		INITIALIZATION
 
-t_err		ft_init(t_data *data);
+t_err		ft_init(t_game_data *data);
 
 //      PARSING
 
-t_err		ft_parse(int ac, char **av, t_data *data);
+t_err		ft_parse(int ac, char **av, t_game_data *data);
 t_bool		ft_is_map_name_valid(char *map_name);
-t_bool		ft_parse_map(int fd, t_data *data);
-t_bool		ft_parse_textures(int fd, t_data *data);
-t_bool		ft_parse_colors(int fd, t_data *data, char *line);
+t_bool		ft_parse_map(int fd, t_game_data *data);
+t_bool		ft_parse_textures(int fd, t_game_data *data);
+t_bool		ft_parse_colors(int fd, t_game_data *data, char *line);
+int 		ft_parse_map_cells(int fd, t_game_data *data);
 
 //		DESTRUCTION
 
-void    	ft_destroy(t_data *data);
+void    	ft_destroy(t_game_data *data);
+
+// EVENT 
+
+int key_press(int keycode, void *param);
+
+// GFX
+
+void raycasting(t_game_data *data );
+
+void	ft_mlx_pixel(t_mlx_img img, int x, int y, unsigned int color);
+
+unsigned int get_color(int r, int g, int b);
+
+unsigned int get_texture_color(t_mlx_img *texture, double u, double v);
 
 #endif

@@ -10,7 +10,9 @@ SRCS			= 	$(MAIN) \
 					srcs/utils/ft_strlen.c srcs/utils/ft_strcmp.c srcs/utils/ft_skip_whitespaces.c srcs/utils/ft_error.c srcs/utils/ft_strtrim_end.c srcs/utils/ft_bzero.c srcs/utils/ft_skip_newlines.c srcs/utils/ft_parse_u1.c \
 					srcs/initialization/ft_init.c \
 					srcs/parsing/ft_parse.c srcs/parsing/ft_is_map_name_valid.c srcs/parsing/ft_parse_map.c srcs/parsing/ft_parse_textures.c srcs/parsing/ft_parse_colors.c \
-					srcs/destruction/ft_destroy.c
+					srcs/destruction/ft_destroy.c\
+					srcs/gfx/color.c srcs/gfx/raycasting.c srcs/event/keypress.c\
+					srcs/parsing/ft_parse_map_cells.c
 
 #-----------------------------------------------#
 #----------------[ COMPILATION ]----------------#
@@ -18,7 +20,7 @@ SRCS			= 	$(MAIN) \
 
 CC				=	gcc
 RM				=	rm -rf
-CFLAGS			=	-O3#-g -fsanitize=address# -Wall -Wextra -Werror -O3
+CFLAGS			=	-g -fsanitize=address# -Wall -Wextra -Werror -O3
 
 HEADERS			=	includes/cube3d.h Makefile
 

@@ -6,7 +6,7 @@ static t_err	ft_close_and_return(int fd, t_err errtype)
 	return (errtype);
 }
 
-t_err	ft_parse(int ac, char **av, t_data *data)
+t_err	ft_parse(int ac, char **av, t_game_data *data)
 {
     int fd;
 

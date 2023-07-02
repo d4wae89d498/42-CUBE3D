@@ -3,17 +3,17 @@
 static t_direction  ft_is_direction_valid(char *line)
 {
     if (ft_strcmp(line, "NO"))
-        return (NO);
+        return (NORTH);
     if (ft_strcmp(line, "SO"))
-        return (SO);
+        return (SOUTH);
     if (ft_strcmp(line, "EA"))
-        return (EA);
+        return (EAST);
     if (ft_strcmp(line, "WE"))
-        return (WE);
+        return (WEST);
     return (NONE);
 }
 
-t_bool  ft_parse_texture_line(char *line, t_data *data, size_t index)
+t_bool  ft_parse_texture_line(char *line, t_game_data *data, size_t index)
 {
     size_t      str_index;
     t_direction direction;
@@ -24,16 +24,21 @@ t_bool  ft_parse_texture_line(char *line, t_data *data, size_t index)
 		return (FALSE);
 	str_index += 2 + ft_skip_whitespaces(line + 2);
     ft_strtrim_end(line + str_index);
-    data->textures[index].direction = direction;
-    data->textures[index].texture_img = mlx_xpm_file_to_image(data->mlx, (line + str_index), &(data->textures[index].width), &(data->textures[index].height));
-    
-    if (!(data->textures[index].texture_img))
+    data->textures[direction - 1].img = mlx_xpm_file_to_image(data->mlx_ptr, (line + str_index), &(data->textures[direction - 1].width), &(data->textures[direction - 1].height));
+  	    if (!(data->textures[index].img))
         return (FALSE); 
+    data->textures[direction - 1].addr = mlx_get_data_addr(data->textures[direction - 1].img, &(data->textures[direction - 1].bits_per_pixel), &(data->textures[direction - 1].line_length), &(data->textures[index].endian));
+ 
+ // todo :: looks useless bellow
+ //data->textures[index].height = 512; 
+
+// data->textures[index].width = 512; 
     
     return (TRUE);
 }
 
-t_bool  ft_parse_textures(int fd, t_data *data)
+// toddo :: allow more flexibility
+t_bool  ft_parse_textures(int fd, t_game_data *data)
 {
     char        *line;
     size_t      index;

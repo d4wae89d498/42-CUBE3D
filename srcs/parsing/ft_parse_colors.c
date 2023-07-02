@@ -10,22 +10,23 @@ static t_side	ft_is_side(char *line)
 		return (F);
 	if (ft_strcmp(line, "C"))
 		return (C);
-	return (NONE);
+	return (NO_SIDE);
 }
 
-static t_bool   ft_parse_color_line(char *line, t_data *data, size_t index)
+static t_bool   ft_parse_color_line(char *line, t_game_data *data, size_t index)
 {
-	t_side	side;
+	/*t_side	side;
 
 	side = ft_is_side(line);
-	if (side == NONE)
+	if (side == NO_SIDE)
 		return (FALSE);
+	if (side == c)
 	data->colors[index].side = side;
-	
+	*/
 	return (TRUE);
 }
 
-t_bool			ft_parse_colors(int fd, t_data *data, char *line)
+t_bool			ft_parse_colors(int fd, t_game_data *data, char *line)
 {
 
 }
