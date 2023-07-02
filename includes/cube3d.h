@@ -7,6 +7,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <mlx.h>
+# include <math.h>
 # include "../srcs/gnl/get_next_line.h"
 # define MAX_MAP_WIDTH 40
 # define MAX_MAP_HEIGHT 40
@@ -18,7 +19,8 @@
 # define DEFAULT_TEXTURE "assets/wall.xpm"
 # define DEFAULT_SKY_COLOR 255
 # define DEFAULT_FLOOR_COLOR 16711680
-
+# define MOVE_SPEED 0.10
+# define ROT_SPEED 0.10
 //  TYPEDEF
 
 typedef unsigned char	t_u1;
@@ -108,6 +110,7 @@ typedef struct s_game_data
 	unsigned int	floor_color;
 	unsigned int	sky_color;
 	char			map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH];
+	int				texture_index;
 }	t_game_data;
 
 //  PROTOTYPE
@@ -151,5 +154,6 @@ void			raycasting(t_game_data *data );
 void			ft_mlx_pixel(t_mlx_img img, int x, int y, unsigned int color);
 unsigned int	get_color(int r, int g, int b);
 unsigned int	get_texture_color(t_mlx_img *texture, double u, double v);
-
+void			draw_line(int x, double wall_height, t_game_data *data,
+	double wall_x);
 #endif

@@ -12,7 +12,8 @@ SRCS			= 	$(MAIN) \
 					srcs/parsing/ft_parse.c srcs/parsing/ft_is_map_name_valid.c srcs/parsing/ft_parse_map.c srcs/parsing/ft_parse_textures.c srcs/parsing/ft_parse_colors.c \
 					srcs/destruction/ft_destroy.c\
 					srcs/gfx/color.c srcs/gfx/raycasting.c srcs/event/keypress.c\
-					srcs/parsing/ft_parse_map_cells.c
+					srcs/parsing/ft_parse_map_cells.c\
+					srcs/gfx/draw_line.c
 
 #-----------------------------------------------#
 #----------------[ COMPILATION ]----------------#
@@ -26,7 +27,7 @@ HEADERS			=	includes/cube3d.h Makefile
 
 NAME			=	cube3D
 
-OBJS			=	$(SRCS:.c=.o)	
+OBJS			=	$(SRCS:.c=.o)
 
 #-----------------------------------------------#
 #-------------------[ TARGET ]------------------#
