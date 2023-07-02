@@ -44,5 +44,9 @@ t_bool	ft_parse_map(int fd, t_game_data *data)
 	}
 	if (!is_valid_map(data->map))
 		return (FALSE);
+	if (!data->textures_state[0] || !data->textures_state[1]
+		|| !data->textures_state[2] || !data->textures_state[3]
+		|| !data->floor_set || !data->sky_set)
+		return (FALSE);
 	return (TRUE);
 }
