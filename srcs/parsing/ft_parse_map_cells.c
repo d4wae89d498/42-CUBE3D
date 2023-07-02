@@ -11,8 +11,10 @@ t_bool	is_valid_map(char map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH])
 {
 	int	y;
 	int	x;
+	int	nbz;
 
 	y = 0;
+	nbz = 0;
 	while (y < MAX_MAP_HEIGHT)
 	{
 		x = -1;
@@ -20,6 +22,7 @@ t_bool	is_valid_map(char map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH])
 		{
 			if (map[y][x] == '0')
 			{
+				nbz += 1;
 				if (check_map_boundaries(x - 1, y) || map[y][x - 1] == ' ')
 					return (0);
 				if (check_map_boundaries(x + 1, y) || map[y][x + 1] == ' ')
@@ -32,7 +35,7 @@ t_bool	is_valid_map(char map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH])
 		}
 		y += 1;
 	}
-	return (1);
+	return (nbz >= 1);
 }
 
 t_err	check_map_dimensions(char *line, int row)

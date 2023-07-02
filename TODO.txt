@@ -1,6 +1,6 @@
 [ ] Tout initialiser a NULL dans le ft_init.c et modifier le ft_error.c pour qu'il free les trucs allouer.
-[x] Lier le parsing a lengine pour les textures 
-[x] Lier le parsing a lengine pour la map 
-[X] Lier le parsing a lengine pour la position du player 
+[x] Lier le parsing a lengine pour les textures
+[x] Lier le parsing a lengine pour la map
+[X] Lier le parsing a lengine pour la position du player
 [X] parsing fes couleurs
-[ ] Norm  
+[x] Norm
