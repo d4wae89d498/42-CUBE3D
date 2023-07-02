@@ -13,7 +13,8 @@ SRCS			= 	$(MAIN) \
 					srcs/destruction/ft_destroy.c\
 					srcs/gfx/color.c srcs/gfx/raycasting.c srcs/event/keypress.c\
 					srcs/parsing/ft_parse_map_cells.c\
-					srcs/gfx/draw_line.c
+					srcs/gfx/draw_line.c\
+					srcs/parsing/ft_init_pos.c
 
 #-----------------------------------------------#
 #----------------[ COMPILATION ]----------------#

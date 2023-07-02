@@ -96,6 +96,17 @@ typedef struct s_mlx_img {
 	int		height;
 }	t_mlx_img;
 
+typedef struct s_parser
+{
+	int		texture_index;
+	char	*line;
+	int		nonempty;
+	int		col;
+	int		row;
+	int		found_pos;
+	int		fd;
+}	t_parser;
+
 typedef struct s_game_data
 {
 	void			*mlx_ptr;
@@ -110,7 +121,7 @@ typedef struct s_game_data
 	unsigned int	floor_color;
 	unsigned int	sky_color;
 	char			map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH];
-	int				texture_index;
+	t_parser		parser;
 }	t_game_data;
 
 //  PROTOTYPE
@@ -139,10 +150,11 @@ t_err			ft_parse_textures(int fd, t_game_data *data, char *line);
 t_err			ft_parse_colors(int fd, t_game_data *data, char *line);
 t_err			ft_parse_map_cells(int fd, t_game_data *data, char *line);
 t_bool			is_valid_map(char map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH]);
-
+void			init_base_position(t_game_data *data, char c, int col, int row);
 //		DESTRUCTION
 
 void			ft_destroy(t_game_data *data);
+int				ft_sfr(void *data, int ret);
 
 // EVENT
 
@@ -155,5 +167,5 @@ void			ft_mlx_pixel(t_mlx_img img, int x, int y, unsigned int color);
 unsigned int	get_color(int r, int g, int b);
 unsigned int	get_texture_color(t_mlx_img *texture, double u, double v);
 void			draw_line(int x, double wall_height, t_game_data *data,
-	double wall_x);
+					double wall_x);
 #endif

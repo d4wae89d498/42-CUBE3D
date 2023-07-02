@@ -15,10 +15,10 @@ t_bool	is_valid_map(char map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH])
 	y = 0;
 	while (y < MAX_MAP_HEIGHT)
 	{
-		x = -1;
-		while (++x < MAX_MAP_WIDTH)
+		x = 0;
+		while (x < MAX_MAP_WIDTH)
 		{
-			if (map[y][x] == '0')
+			if (map[y][x++] == '0')
 			{
 				if (check_map_boundaries(x - 1, y) || map[y][x - 1] == ' ')
 					return (0);

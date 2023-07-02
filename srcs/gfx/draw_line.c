@@ -17,7 +17,8 @@ void	draw_line(int x, double wall_height, t_game_data *data,
 	while (y < end && y < HEIGHT)
 	{
 		wall_tex_pos = (y - start) / wall_height;
-		tex_color = get_texture_color(&data->textures[data->texture_index],
+		tex_color = get_texture_color(&data->textures[
+				data->parser.texture_index],
 				wall_x, wall_tex_pos);
 		ft_mlx_pixel(data->img, x, y++, tex_color);
 	}

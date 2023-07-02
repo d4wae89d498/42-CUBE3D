@@ -78,13 +78,13 @@ void	calculate_wall_parameters(t_ray *ray, t_game_data *data, int x)
 	else
 		wall_x = data->player.x + ray->perp_wall_dist * ray->dir_x;
 	if (ray->side == 0 && ray->dir_x > 0)
-		data->texture_index = NORTH - 1;
+		data->parser.texture_index = NORTH - 1;
 	else if (ray->side == 0 && ray->dir_x < 0)
-		data->texture_index = SOUTH - 1;
+		data->parser.texture_index = SOUTH - 1;
 	else if (ray->side == 1 && ray->dir_y > 0)
-		data->texture_index = EAST - 1;
+		data->parser.texture_index = EAST - 1;
 	else
-		data->texture_index = WEST - 1;
+		data->parser.texture_index = WEST - 1;
 	draw_line(x, wall_height, data, wall_x);
 }
 
