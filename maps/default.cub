@@ -2,7 +2,7 @@ EA ./assets/east.xpm
 SO ./assets/south.xpm
 
 F 225,30,100
-C 100,30,255
+C    100,30,255
 
 
         1111111111111111111111111

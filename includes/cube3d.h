@@ -25,6 +25,12 @@
 
 typedef unsigned char	t_u1;
 
+typedef struct s_color {
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+} t_color;
+
 typedef enum e_bool
 {
 	FALSE = 0,
