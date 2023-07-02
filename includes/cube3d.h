@@ -29,7 +29,7 @@ typedef struct s_color {
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	b;
-} t_color;
+}	t_color;
 
 typedef enum e_bool
 {
