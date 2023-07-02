@@ -59,7 +59,7 @@ int main()
     }
 
     // Ouvrir le fichier .cub
-    fd = open("map.cub", O_RDONLY);
+    fd = open("mine.cub", O_RDONLY);
     if (fd == -1)
     {
         printf("Erreur lors de l'ouverture du fichier.\n");
@@ -88,9 +88,16 @@ int main()
             return 1;
         }*/
 
+        int nonempty = 0;
+
         for (int col = 0; col < MAP_WIDTH; col++)
         {
             char c = line[col];
+            if (!nonempty && c == '\n' && get_next_line(fd))
+            {
+                printf("erreur, la carte ne peux pas contenir un saut de ligne dans la description!\n");
+                exit(0);
+            }
             if (c == '\n' || !c)
                 break;
             if (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'E' && c != 'W' && c != ' ')
@@ -100,6 +107,8 @@ int main()
                 close(fd);
                 return 1;
             }
+            if (c != ' ')
+                nonempty += 1;
 
             map[row][col] = c;
 
