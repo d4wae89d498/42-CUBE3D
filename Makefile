@@ -18,9 +18,9 @@ SRCS			= 	$(MAIN) \
 
 CC				=	gcc
 RM				=	rm -rf
-CFLAGS			=	# -Wall -Wextra -Werror -O3
+CFLAGS			=	-O3#-g -fsanitize=address# -Wall -Wextra -Werror -O3
 
-HEADERS			=	includes/cube3d.h
+HEADERS			=	includes/cube3d.h Makefile
 
 NAME			=	cube3D
 
