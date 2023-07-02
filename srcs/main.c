@@ -16,14 +16,11 @@ int main(int ac, char **av)
         return (ft_error(ret, &data ));
 
 
-    data.player.x = 16;
-    data.player.y = 2;
+    //data.player.x = 16;
+    //data.player.y = 2;
 
 
-    data.player.dir_x = 0.0;
-    data.player.dir_y = 1.0;
-    data.player.plane_x = 0.66;
-    data.player.plane_y = 0.0;
+
 
     mlx_hook(data.win_ptr, 2, 1L << 0, key_press, &data );
 

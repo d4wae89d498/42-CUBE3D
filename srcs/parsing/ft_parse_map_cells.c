@@ -88,6 +88,34 @@ t_err ft_parse_map_cells(int fd, t_game_data *data, char *line)
             {
                 data->player.x = col + 0.5;
                 data->player.y = row + 0.5;
+                if (c == 'N')
+                {
+                    data->player.dir_x = 1.0;
+                    data->player.dir_y = 0.0;
+                    data->player.plane_x = 0.0;
+                    data->player.plane_y = 0.66;
+                }
+                else if (C == 'S')
+                {
+                    data->player.dir_x = -1.0;
+                    data->player.dir_y = 0.0;
+                    data->player.plane_x = 0.0;
+                    data->player.plane_y = -0.66;
+                }
+                else if (c == 'E')
+                {
+                    data->player.dir_x = 0.0;
+                    data->player.dir_y = 1.0;
+                    data->player.plane_x = -0.66;
+                    data->player.plane_y = 0.0;
+                } 
+                else 
+                {
+                    data->player.dir_x = 0.0;
+                    data->player.dir_y = -1.0;
+                    data->player.plane_x = 0.66;
+                    data->player.plane_y = 0.0;
+                }
                 // TODO : check for player dir
             }
 
