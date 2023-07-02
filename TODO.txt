@@ -2,5 +2,5 @@
 [x] Lier le parsing a lengine pour les textures 
 [x] Lier le parsing a lengine pour la map 
 [ ] Lier le parsing a lengine pour la position du player 
-[ ] parsing fes couleurs
+[X] parsing fes couleurs
 [ ] Norm  

@@ -28,7 +28,7 @@ t_bool  ft_parse_map(int fd, t_game_data *data)
           else if (state == MATCH)
             continue ;
 
-
+        printf("continue...");
           state = ft_parse_colors(fd, data, line);
           if (state != OK && state != MATCH)
            {
