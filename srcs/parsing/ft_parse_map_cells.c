@@ -68,6 +68,7 @@ t_err	ft_parse_c(t_game_data *data, char *line, int col, int row)
 		found_pos = TRUE;
 		init_base_position(data, c, col, row);
 	}
+	return (OK);
 }
 
 t_err	ft_parse_map_cells(int fd, t_game_data *data, char *line)

@@ -135,13 +135,11 @@ typedef struct s_game_data
 //		UTILS
 
 int				ft_strlen(char *str);
-t_bool			ft_strcmp(char *s1, char *s2);
 size_t			ft_skip_whitespaces(char *str);
 int				ft_error(t_err errtype, t_game_data *data);
 void			ft_strtrim_end(char *str);
 void			ft_bzero(void *data, size_t n);
 t_bool			ft_skip_newlines(int fd, char **current_line);
-t_bool			ft_parse_u1(char *number, t_u1 *out);
 
 //		INITIALIZATION
 

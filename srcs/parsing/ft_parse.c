@@ -8,7 +8,7 @@ static t_err	ft_close_and_return(int fd, t_err errtype)
 
 t_err	ft_parse(int ac, char **av, t_game_data *data)
 {
-	int fd;
+	int	fd;
 
 	if (ac != 2)
 		return (WRONG_ARG_NUMBER);

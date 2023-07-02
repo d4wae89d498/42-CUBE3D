@@ -20,7 +20,7 @@ static void	init_base_position_s(t_game_data *data, int col, int row)
 	data->player.plane_y = -0.66;
 }
 
-static void init_base_position_e(t_game_data *data, int col, int row)
+static void	init_base_position_e(t_game_data *data, int col, int row)
 {
 	data->player.x = col + 0.5;
 	data->player.y = row + 0.5;
@@ -39,7 +39,6 @@ static void	init_base_position_w(t_game_data *data, int col, int row)
 	data->player.plane_x = 0.66;
 	data->player.plane_y = 0.0;
 }
-
 
 void	init_base_position(t_game_data *data, char c, int col, int row)
 {

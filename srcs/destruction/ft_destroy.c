@@ -6,9 +6,9 @@ int	ft_sfr(void *data, int ret)
 	return (ret);
 }
 
-static void ft_destroy_textures(t_game_data *data)
+static void	ft_destroy_textures(t_game_data *data)
 {
-	size_t  i;
+	size_t	i;
 
 	i = 0;
 	while (i < 4)
@@ -20,7 +20,7 @@ static void ft_destroy_textures(t_game_data *data)
 		}
 		i++;
 	}
-	 mlx_destroy_image(data->mlx_ptr, data->default_texture.img);
+	mlx_destroy_image(data->mlx_ptr, data->default_texture.img);
 	data->default_texture.img = NULL;
 }
 

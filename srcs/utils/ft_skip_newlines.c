@@ -2,24 +2,26 @@
 
 /*
 **  This function make sure theres is at least one empty newline on the fd,
-**      if not return FALSE
-**      set current_line to next non empty line;
-**      return TRUE if everythings good;
+**	  if not return FALSE
+**	  set current_line to next non empty line;
+**	  return TRUE if everythings good;
 */
-
-t_bool  ft_skip_newlines(int fd, char **current_line)
+t_bool	ft_skip_newlines(int fd, char **current_line)
 {
-    size_t  index;
+	size_t	index;
 
-    index = 0;
-    while ((*current_line = get_next_line(fd)))
-    {
-        if ((*current_line)[0] != '\n')
-        {
-            if (index == 0)
-                return (FALSE);
-            return (TRUE);
-        }
-        index++;
-    }
+	index = 0;
+	while (1)
+	{
+		*current_line = get_next_line(fd);
+		if (!*current_line)
+			break ;
+		if ((*current_line)[0] != '\n')
+		{
+			if (index == 0)
+				return (FALSE);
+			return (TRUE);
+		}
+		index++;
+	}
 }
