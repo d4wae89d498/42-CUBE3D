@@ -22,6 +22,10 @@
 #define PI 3.14159265359
 #define FOV_ANGLE (60 * (PI / 180)) // Angle de champ de vision
 
+#define DEFAULT_TEXTURE "assets/wall.xpm"
+#define DEFAULT_SKY_COLOR 255
+#define DEFAULT_FLOOR_COLOR 16711680
+
 //  TYPEDEF
 
 typedef unsigned char t_u1;
@@ -46,7 +50,8 @@ typedef enum e_err
     WRONG_ARG_NUMBER,
 	WRONG_MAP_NAME,
 	OPEN_ERROR,
-	MAP_ERROR
+	MAP_ERROR,
+	MATCH
 }	t_err;
 
 typedef enum e_direction
@@ -103,7 +108,11 @@ typedef struct
     void *win_ptr;
     t_player player;
     t_mlx_img	img;
+	t_bool 			textures_state[4];
+	t_bool 			floor_set;
+	t_bool			sky_set;
     t_mlx_img		textures[4];
+	t_mlx_img		default_texture;
 	unsigned int			floor_color;
 	unsigned int			sky_color;
 	char 			map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH];
@@ -131,9 +140,10 @@ t_err		ft_init(t_game_data *data);
 t_err		ft_parse(int ac, char **av, t_game_data *data);
 t_bool		ft_is_map_name_valid(char *map_name);
 t_bool		ft_parse_map(int fd, t_game_data *data);
-t_bool		ft_parse_textures(int fd, t_game_data *data);
-t_bool		ft_parse_colors(int fd, t_game_data *data, char *line);
-int 		ft_parse_map_cells(int fd, t_game_data *data);
+t_err		ft_parse_textures(int fd, t_game_data *data, char *line);
+t_err		ft_parse_colors(int fd, t_game_data *data, char *line);
+t_err 		ft_parse_map_cells(int fd, t_game_data *data, char *line);
+t_bool 		is_valid_map(char map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH]);
 
 //		DESTRUCTION
 

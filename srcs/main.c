@@ -9,6 +9,7 @@ int main(int ac, char **av)
     t_game_data data;   
     t_err       ret;
     
+
     if ((ret = ft_init(&data )) != OK)
         return (ft_error(ret, &data ));
     if ((ret = ft_parse(ac, av, &data )) != OK)

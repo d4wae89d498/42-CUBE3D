@@ -9,7 +9,7 @@ static void draw_line(int x, double wall_height, t_game_data *data , double wall
 
     while (y < start)
     {
-        ft_mlx_pixel(data->img, x, y, get_color(0, 0, 255)); // Couleur du ciel (bleu)
+        ft_mlx_pixel(data->img, x, y, data->sky_color);
         y++;
     }
     while (y < end && y < HEIGHT)
@@ -23,7 +23,7 @@ static void draw_line(int x, double wall_height, t_game_data *data , double wall
     }
     while (y < HEIGHT)
     {
-        ft_mlx_pixel(data->img, x, y, get_color(255, 0, 0)); // Couleur du sol (rouge)
+        ft_mlx_pixel(data->img, x, y, data->floor_color); 
         y++;
     }
 }

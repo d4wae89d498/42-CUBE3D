@@ -7,13 +7,15 @@ static void ft_destroy_textures(t_game_data *data)
     i = 0;
     while (i < 4)
     {
-        if (data->textures[i].img)
+        if (data->textures_state[i])
         {
             mlx_destroy_image(data->mlx_ptr, data->textures[i].img);
             data->textures[i].img = NULL;
         }
         i++;
     }
+     mlx_destroy_image(data->mlx_ptr, data->default_texture.img);
+    data->default_texture.img = NULL;
 }
 
 void    ft_destroy(t_game_data *data)
